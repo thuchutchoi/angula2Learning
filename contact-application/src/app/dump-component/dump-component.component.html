@@ -1,0 +1,51 @@
+<p>
+  dump-component works!
+</p>
+<ul>
+  <li *ngFor="let mess of message">
+      {{mess}}
+  </li>
+</ul>
+<button (click)="printable=!printable">Toggle</button>
+<div *ngIf="printable">
+  <img [src]="avatar">
+  <button (click)="doClick()">Click me</button>
+</div>
+<div *ngFor="let contact of contacts">
+  <h3>{{contact.name}}</h3>
+  <div>
+    <img *ngIf="contact.avatar?.url" [src]="contact.avatar?.url" class="tps-avatar">
+  </div>
+</div>
+<div>
+  <button (click)="change(1)">Tab1</button>
+  <button (click)="change(2)">Tab2</button>
+  <button (click)="change(3)">Tab3</button>
+</div>
+<div [ngSwitch]="index">
+  <div *ngSwitchCase="1">
+    <div>
+      Tab content 1
+    </div>
+    <p>
+      Anh dang o tab1
+    </p>
+  </div>
+  <div *ngSwitchCase="2">
+    <div>
+      Tab content 2
+    </div>
+    <p>
+      Anh dang o tab2
+    </p>
+  </div>
+  <div *ngSwitchCase="3">
+    <div>
+      Tab content 3
+    </div>
+    <p>
+      Anh dang o tab3
+    </p>
+  </div>
+</div>
+<input type="text" (change)="onInput($event)">

@@ -1,0 +1,45 @@
+<p>
+  grid-employs works!
+</p>
+<h1>{{message}}</h1>
+<hr>
+<input type="button" value="Add" class="btn btn-default" (click)="addEmp()" />
+<div style="overflow:auto">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>EmpNo</td>
+                <td>EmpName</td>
+                <td>Salary</td>
+                <td>DeptName</td>
+                <td>Designation</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let emp of employees;let i=idx">
+                <ng-template [ngTemplateOutlet]="loadTemplate(emp)" [ngTemplateOutletContext]="{ $implicit: emp, idx: i }"></ng-template>
+            </tr>
+          
+        </tbody>
+    </table>
+</div>
+
+<!--The Html Template for Read-Only Rows-->
+<ng-template #readOnlyTemplate let-emp>
+  <td>{{emp.id}}</td>
+  <td>{{emp.name}}</td>
+  <td>{{emp.age}}</td>
+  <td>{{emp.salary}}</td>
+  <td>{{emp.deptName}}</td>
+  <td>{{emp.designation}}</td>
+  <td>
+      <input type="button" value="Edit" class="btn btn-default" (click)="editEmployee(emp)" />
+  </td>
+  <td>
+      <input type="button" value="Delete" (click)="deleteEmp(emp)" class="btn btn-danger" />
+  </td>
+</ng-template>
